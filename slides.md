@@ -179,7 +179,7 @@ Deep learning algorithms are neural networks, and they are a type of supervised 
 
 ???
 
-Deep learning is generalizable and more powerful than traditional machine learning. Neural networks don't need to know anything about the problem domain they are working in. In fact, they don't even know that they are operating on images. All they see are numbers.
+Deep learning is generalizable and more powerful than traditional machine learning. In traditional machine learning we have to manually define features, which is time intensive and requires domain expertise. Deep learning algorithms learn features automatically. Neural networks don't need to know anything about the problem domain they are working in. In fact, they don't even know that they are operating on images. All they see are numbers.
 
 The same deep learning algorithms can be used for different tasks. If I wanted to have an algorithm to tell me if an image is a cat or a dog, it could also tell me if something was a hot dog or a pizza.
 
