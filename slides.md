@@ -605,15 +605,17 @@ class:impact
 ???
 This is an early stage demo trained on a single lap around the track. It hasn't learned much yet, it's not turning.
 
-A few notes on how this is working. You are seeing the prediction part of deep learning. We are taking rapid screenshots of the game, passing the image (as a multi-dimensional array of numbers) to our model, getting a prediction (controller input), and then sending that input into MarioKart.
 
-The window on the right is showing the input that is being sent. Notice how quickly the predictions are being made, every line in the terminal output is a prediction.
 
 ---
 <video controls src="videos/2.mov" type="video/mp4" class="img-squash img-center"/>
 
 ???
 This example is a model that has been trained on 3 laps around the track. You can see it can now do basic turns, but it can't recover from errors.
+
+A few notes on how this is working. You are seeing the prediction part of deep learning. We are taking rapid screenshots of the game, passing the image (as a multi-dimensional array of numbers) to our model, getting a prediction (controller input), and then sending that input into MarioKart.
+
+The window on the right is showing the input that is being sent. Notice how quickly the predictions are being made, every line in the terminal output is a prediction.
 
 ---
 <video controls src="videos/3.mov" type="video/mp4" class="img-squash img-center"/>
