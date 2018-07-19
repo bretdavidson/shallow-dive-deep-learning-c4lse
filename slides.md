@@ -33,36 +33,6 @@ Here are some notes for the speakers to control the slide deck:
 - t: Reset presentation timer
 
 ---
-# Agenda
-
-- How is deep learning being used?
-- How does deep learning work?
-- How are we doing this work?
-- What are the opportunities in libraries?
-- Demos throughout!
-
-???
-KB Start
-
-Here's the rough outline for today's SWAP. We'll touch on ...
-
-A lot of what we talk about will be grounded in demonstration applications
-we've developed
-
-For now, when I say deep learning, you can also assume I mean what the
-media refers to as "AI", "Machine Learning" or "Neural Networks"
-
----
-# Goals
-
-- Parse some of the hype
-- Grounding in technical aspects
-- Support creative thinking in this space
-
-???
-Our goals for this presentation are to parse some of the hype around deep learning, provide a basic grounding in some of the technical aspects of deep learning, and to help spur creative thinking around deep learning and its uses in libraries. We're here today talking about this because we'd like to work with you on applying this technology to library services.
-
----
 
 <img class="img-center img-squash" src="images/hype2.png"></img>
 
@@ -130,71 +100,6 @@ Of course there would be ethical issues to consider if actually implemented this
 We built this demo to show that we can do something like this pretty easily. You can see that this was captured in Suma.
 
 ---
-class:impact
-# Applications of Machine Learning
-
-???
-Let's talk about some areas where machine learning is being applied
-today.
-
----
-
-# Self-Driving Cars
-<img class="img-center img-squash" src="images/self-driving.jpg"></img>
-
-???
-Self driving cars have been in the news alot lately, here's what we thought that would like.
-
----
-# Self-Driving Cars
-<img class="img-center img-squash" src="images/uber.png"></img>
-
-???
-This is actually what it looks like now. Self driving cars are probably 5 years away, much closer than the domination of robots.
-
----
-# Personal Assistants
-
-<img class="img-center img-squash" src="images/siri.jpg"></img>
-
-???
-(Siri, Google Home, Alexa)
-
-Our personal assistants use machine learning for everything from listening to us, to doing information retrieval, to reporting back results.
-
----
-# Medical Imagery
-
-<img class="img-center img-squash" src="images/medical-image.jpg"></img>
-
-???
-Machine learning is being used in the medical field for earlier detection of diseases by performing analysis on medical imagery or other health-related data.
-
----
-# Translation
-
-<img class="img-center img-squash" src="images/translate.png"></img>
-
-???
-Of course, we've all used services like Google translate, which also uses deep learning for it's translation services.
-
----
-background-image: url(images/ai_ml_dl_compare.png)
-
-???
-BD Start
-
-What is machine learning vs deep learing?
-
-When you hear about machine learning you might hear other terms like AI and Deep learning. What's the relationship between these?
-
-AI is the overarching field that machine learning is a part of. It's concerned with having computers do things that humans are better at doing than computers, to perceive and act on their environment.
-
-Machine learning is a subfield on having computers learn to do some task based on data.
-
-Deep learning is a further subfield of that that is concerned specifically with deep neural networks.
-
----
 # Machine Learning
 
 - “A field of computer science that gives computers the ability to learn without being explicitly programmed”
@@ -205,6 +110,7 @@ Deep learning is a further subfield of that that is concerned specifically with 
 - Essentially, an approach that enables computers to make predictions given some data
 
 ???
+BD Start
 Let's formalize our understanding of machine learning a bit more.
 
 Read the slide.
@@ -232,9 +138,9 @@ Examples:
 
 Supervised learning is when we have an algorithm that learns how to make predictions based on labeled data it has access to in advance.
 
-Examples of these are things like linear regression, logistic regression, decision trees, random forests. Most of the things you've heard about in the news or use everyday are primarily supervised learning.
+Examples of these are things like linear regression, logistic regression, and random forests. Most of the things you've heard about in the news or use everyday are primarily supervised learning.
 
-Concretely, if we have an algorithm and we feed it labeled images of cats and dogs, we can train it to evaluate an previously unseen, new image and classify it.
+If we have an algorithm and we feed it labeled images of cats and dogs, we can train it to evaluate an previously unseen, new image and classify it.
 
 ---
 # Unsupervised Learning
@@ -248,7 +154,7 @@ Examples:
 ???
 The other broad category is unsupervised learning, which is trying to make sense of an unlabled data set and then making predictions.
 
-An example of this might be given a bunch of unlabeled or classified text, say chat logs, categorize this text into 10 different buckets that represent categories of speech.
+An example of this might be classifying unlabeled textual data.
 
 This has been a less researched area, because it's a much harder problem.
 
@@ -261,7 +167,7 @@ Subfield of machine learning that involves the use of deep artificial neural net
 
 Loosely mimics how the human brain works with layers of neurons with connections between them.
 
-To emphasize, deep learning algorithms are neural networks, and they are a type of supervised learning. We train them with labeled data and then we make predictions on unlabeled data.
+Deep learning algorithms are neural networks, and they are a type of supervised learning. We train them with labeled data and then we make predictions on unlabeled data.
 
 ---
 # Deep Learning vs. Traditional Machine Learning
@@ -272,30 +178,10 @@ To emphasize, deep learning algorithms are neural networks, and they are a type 
 * Task Agnostic
 
 ???
-- Deep learning learns feature representations rather than relying on manual effort.
 
-In traditional machine we have to manually define the features of the data we want to make predictions on. Features are the observable properties or characteristics of the objects being analayzed, like edges, or more specifically, the floppy ears of a dog or pointy ears of a cat.
+Deep learning is generalizable and more powerful than traditional machine learning. Neural networks don't need to know anything about the problem domain they are working in. In fact, they don't even know that they are operating on images. All they see are numbers.
 
-The process of feature engineering is very time intensive and requires expert domain knowledge.
-
-In contrast, deep learning is learning the features automatically.
-
-- Can learn much more complex functions than traditional ML methods
-
-Deep learning is like taking millions of linear regressions and putting them all together. In linear regression you can learn the relationship between two features, but with deep learning you can learn the relationships between millions of features.
-
-Domain Neutral
-- Neural networks don’t need to know anything about the problem domain they are working in
-
-Neural networks don't need to know anything about the problem domain they are working in. In fact, they don't even know that they are operating on images. All they see are numbers.
-
-Task Agnostic
-- The same algorithms can be used for different tasks - they just need to be trained on different data
-
-
-The same algorithms can be used for different tasks.
-
-If I wanted to have an algorithm to tell me if an image is a cat or a dog, it could also tell me if something was a hot dog or a pizza, or distinguish between different people.
+The same deep learning algorithms can be used for different tasks. If I wanted to have an algorithm to tell me if an image is a cat or a dog, it could also tell me if something was a hot dog or a pizza.
 
 The code doesn't need to change, only the data being used to train the network.
 
@@ -309,12 +195,16 @@ We gave specific examples of products that deep learning is being used in, but l
 ---
 
 # Computer Vision
-
 - Image classification
 - Object detection/localization
 - Image captioning
 
+<img class="img-small" src="images/uber.png"></img>
+<img class="img-small" src="images/medical-image.jpg"></img>
+
 ???
+
+
 Classification. Given an image of a single object, tell me what the image is.
 
 Object detection and localization. Given an image of multiple objects, tell me what's in the image and where it is in the image (pixel coordinates). If I have a picture of a park, it will tell me where the swing is, the slide, the pond, and put boxes around them.
@@ -326,6 +216,9 @@ Captioning. Given an image, produce a natural language caption for the image. If
   - Machine translation
   - Language modeling
   - Word embedding
+
+
+ <img class="img-small" src="images/translate.png"></img>
 
 ???
 Deep learning is also used for NLP.
@@ -340,6 +233,8 @@ Word embedding.  Given a word or sentence, can you translate it into a numerical
 # Audio processing
   - Speech-to-text
   - Text-to-speech
+
+<img class="img-small" src="images/siri.jpg"></img>
 
 ???
 Digital assistant examples fall here. For example, take an audio file of a human voice and put it into text so a machine can act on it.
