@@ -112,6 +112,7 @@ We built this demo to show that we can do something like this pretty easily. You
 
 ???
 BD Start
+
 Let's formalize our understanding of machine learning a bit more.
 
 Read the slide.
@@ -180,7 +181,11 @@ Deep learning algorithms are neural networks, and they are a type of supervised 
 
 ???
 
-Deep learning is generalizable and more powerful than traditional machine learning. In traditional machine learning we have to manually define features, which is time intensive and requires domain expertise. Deep learning algorithms learn features automatically. Neural networks don't need to know anything about the problem domain they are working in. In fact, they don't even know that they are operating on images. All they see are numbers.
+Deep learning is generalizable and more powerful than traditional machine learning.
+
+In traditional machine learning we have to manually define features, which is time intensive and requires domain expertise. Deep learning algorithms learn features automatically.
+
+Neural networks don't need to know anything about the problem domain they are working in. In fact, they don't even know that they are operating on images. All they see are numbers.
 
 The same deep learning algorithms can be used for different tasks. If I wanted to have an algorithm to tell me if an image is a cat or a dog, it could also tell me if something was a hot dog or a pizza.
 
@@ -191,7 +196,7 @@ class:impact
 # What is deep learning good for anyway?
 
 ???
-We gave specific examples of products that deep learning is being used in, but let's generalize that a bit and talk about what kinds of problems it's good at solving.
+Let's talk about what problems deep learning is good at solving and specific examples of its applications.
 
 ---
 
@@ -205,12 +210,9 @@ We gave specific examples of products that deep learning is being used in, but l
 
 ???
 
+One area is computer vision, which is concerned with recognizing what is in an image and where objects are within an image.
 
-Classification. Given an image of a single object, tell me what the image is.
-
-Object detection and localization. Given an image of multiple objects, tell me what's in the image and where it is in the image (pixel coordinates). If I have a picture of a park, it will tell me where the swing is, the slide, the pond, and put boxes around them.
-
-Captioning. Given an image, produce a natural language caption for the image. If I gave the network an image of someome playing hockey on the street, it would give me a caption like "people playing hockey in their driveway".
+This is used in areas like image classification, object detection, self-driving cars, and medical imagery.
 
 ---
 # Natural Language Processing
@@ -222,13 +224,7 @@ Captioning. Given an image, produce a natural language caption for the image. If
  <img class="img-small" src="images/translate.png"></img>
 
 ???
-Deep learning is also used for NLP.
-
-Machine translation, e.g. translation language from English to French.
-
-Language modeling. Given some text, tell me what the parts of speech are and tell me more about the structure of the text.
-
-Word embedding.  Given a word or sentence, can you translate it into a numerical value, which we can compare against a vector of numerical values or other things that have been translated. We can use this to explore concept similarity.
+Deep learning is also used for NLP problems like translation and identifying concept similarity within text.
 
 ---
 # Audio processing
@@ -240,14 +236,14 @@ Word embedding.  Given a word or sentence, can you translate it into a numerical
 ???
 Digital assistant examples fall here. For example, take an audio file of a human voice and put it into text so a machine can act on it.
 
-Text-to-Speech is done as well, primarily to improve the quality of the voice rendering, to make the voice sound more natural and expressive.
-
 ---
 class:impact
 # Deep Learning Has Been Around For A While
 
 ???
-Deep learning is rooted in decades of mathematics research and based on models of how the human brain works. The ideas behind deep learning have been in development since the 1940s, but really only exploded in popularity in 2012 when a researcher used a deep learning model to achieve state of the art by a significant margin in a computer vision research contest, beating out traditional computer vision approaches for the first time.
+Deep learning is rooted in decades of mathematics research and based on models of how the human brain works.
+
+The ideas behind deep learning have been in development since the 1940s, but really only exploded in popularity in 2012 when a researcher used a deep learning model to achieve state of the art by a significant margin in a computer vision research contest, beating out traditional computer vision approaches for the first time.
 
 ---
 # Why did deep learning take so long to catch on?
@@ -442,6 +438,7 @@ class:impact
 
 ???
 BD Start
+
 Now that we have an understanding of how neural networks work, we've prepared a demo that will help us understand how neural networks learn and how a model performs at different stages of development.
 
 ---
@@ -476,7 +473,7 @@ Predictions are made, given NEW, untrained screenshots, generate NEW joystick in
 ???
 The model we used was taken from a seminal paper by researchers at NVIDIA, called "End to end learning for self driving cars". This model was developed as an example of how self driving cars work, but it isn’t complete or what you would use to drive your car.
 
-It is however good enough to use for Mario Kart. The point of this image isn't to necessarily understand the convolutional neural network, but to understand the enormous number of connections it creates. This one model will create 27 million connections and 250 parameters, aa incomprehensiblly large data structure.
+It is however good enough to use for Mario Kart. The point of this image isn't to necessarily understand the convolutional neural network, but to understand the enormous number of connections it creates. This one model will create 27 million connections and 250,000 parameters, aa incomprehensiblly large data structure.
 
 https://arxiv.org/abs/1604.07316
 
@@ -509,18 +506,6 @@ The window on the right is showing the input that is being sent. Notice how quic
 ~15 mins of play
 
 This example performs much better, and can do things like error recovery. This one can actually finish a race.
-
----
-class:impact
-# Why Build Our Own?
-???
-One question we often get is why do we need to do our own machine learning?
-
-It's not always required that we build our models entirely from scratch. We will often take a known model, tweak it and train it on our own data.
-
-One technique is to use "transfer learning: where we can remove the output layer from an existing model and add our own. The lower layers will learn more abstract concepts and higher layers will learn more concreate concepts. So we can take advantage of the abstract features of the existing model and improved training time, but we still have the benefit of adding our own layers and training on our own data.
-
-What you've seen today has been a combination of using API services, using known models directly, and using transfer learning techniques to take known models and extend them for library use.
 
 ---
 class: impact
@@ -598,7 +583,7 @@ get the key terms or create a summary in an automated way.
 ???
 
 Here's another.
-Remember when we mentioned transfer learning before? This one uses the same model architecture as
+This one uses the same model architecture as
 SumaVision, but we took off the later layers and retrained on new data
 we collected.
 
@@ -616,7 +601,9 @@ class:impact
 
 
 ???
-The second opportunity for libraries is supporting researchers through deep learning consultations and research sprints. We can help bootstrap researchers looking to get started with applying deep learning techniques to their research projects. Example snowflake research.
+The second opportunity for libraries is supporting researchers through deep learning consultations and research sprints.
+
+We can help bootstrap researchers looking to get started with applying deep learning techniques to their research projects.
 
 ---
 # Snowflake Classification
@@ -629,7 +616,9 @@ The second opportunity for libraries is supporting researchers through deep lear
 
 ???
 
-A faculty member at NCSU from the dept of marine, earth, and atmospheric sciences, contacted the libraries looking for machine learning support. They have an extremely large dataset of over 1 million snowflake images. These images are taken by one of only ten cameras that are doing this capture. Have used a number of "traditional" machine learning techniques to attempt to classify degrees of "riming" on snowflakes, that is, how large or small the clusters of ice are. We are working with them to develop a proof of concept model to explore the potential for current deep learning computer vision techniques to improve on their results.
+A faculty member at NCSU from the dept of marine, earth, and atmospheric sciences, contacted the libraries looking for machine learning support. They have an extremely large dataset of over 1 million snowflake images. These images are taken by one of only ten cameras that are doing this capture.
+
+They have used a number of "traditional" machine learning techniques to attempt to classify degrees of "riming" on snowflakes, that is, how large or small the clusters of ice are. We are working with them to develop a proof of concept model to explore the potential for current deep learning computer vision techniques to improve on their results.
 
 This has also been an opportunity to explore the viability of providing this kind of service to researchers. Is it useful for them? Can we scale this kind of support?
 
@@ -638,7 +627,9 @@ class:impact
 # Cultural Heritage Ecosystem
 
 ???
-Third opportunity area is developing the ecosystem around deep learning use, e.g. data annotation, data distribution, etc. In general, improving use of these approaches among cultural heritage institutions.
+A third opportunity area is developing the ecosystem around deep learning use, e.g. data annotation, data distribution, etc.
+
+In general, improving use of these approaches among cultural heritage institutions.
 
 ---
 # Data Annotation and Sharing
@@ -649,7 +640,9 @@ Third opportunity area is developing the ecosystem around deep learning use, e.g
 
 Through our experimentation, we've learned that current tools for data annotation are extremely limited in terms of their ease of use and speed of use. We've prototyped new designs for tools in this area that speed up the process, and also allow for crowdsourcing of this process.
 
-As earlier adopters, we're also in the position to help define best practices and approaches for sharing models and data for reuse by other cultural heritage institutions. For example, if we pursued a production model to detect headlines and images in newspapers, this would probably be useful to other libraries. How can we share data for the purposes of reuse? How can we make it easy for other institutions to get their own models up and running? How can we make it easy for them to contribute new data to the model?
+As earlier adopters, we're also in the position to help define best practices and approaches for sharing models and data for reuse by other cultural heritage institutions.
+
+For example, if we pursued a production model to detect headlines and images in newspapers, this would probably be useful to other libraries. How can we share data for the purposes of reuse? How can we make it easy for other institutions to get their own models up and running? How can we make it easy for them to contribute new data to the model?
 
 ---
 # Ethics
@@ -657,15 +650,24 @@ As earlier adopters, we're also in the position to help define best practices an
 - data is often the source of bias in this technology
 - identify ways to create more representative data sets
 - expose to the user that we are using this technology
-- give them the option to turn it off
 - give them the option to provide feedback
+- give them the option to turn it off
 
 ???
-We wanted to cap off saying a bit about algorithmic bias in deep learning. We hope we've convinced you through this presentation that it's the data that are the really important piece of introducing bias into models.
+BD start
 
-We need to identify ways to create better representative data sets.
+We wanted to close by saying a bit about algorithmic bias in deep learning. We hope we've convinced you through this presentation that the data used to train models is where bias is often introduced.
 
-We should explore  ways to expose to the user that we are using deep learing, give them the option to turn it off, and give them the option to give feedback, potentially with reinforcement learning systems.
+What are some concrete steps we can take to reduce the potential bias of these systems and their impact on users?
+
+We can create more representative data sets.
+
+We can make it clear to the user when we are using deep learning in our services.
+
+We can give users the option to provide feedback, which could influence how the model is trained in the future.
+
+We can give users the option to turn off deep learning enhancements.
+
 
 ---
 # Deep Learning Research
@@ -676,6 +678,12 @@ https://distill.pub/2018/building-blocks/
 
 ???
 Example of work being done to help expose the way neural networks make decisions and train themselves.
+
+Distill is a state of the art publishing platform for machine learning research.
+
+A recent article entitled "The Building Blocks of Interpretability" shows the progress researchers have made in understanding the way neural networks recognize identifiable features in image data.
+
+Although highly technical, I encourage you to review this article, especially the interactive diagrams, as it shows both the future of scholarly publishing in the field and the concrete ways in which researchers are investigating algorithmic bias.
 
 ---
 class:impact
