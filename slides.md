@@ -10,16 +10,17 @@ layout: true
 
 ---
 # A Shallow Dive Into Deep Learning
-## Kevin Beswick
+
+## Kevin Beswick (@kbeswick)
 ## Bret Davidson
+
+### NCSU Libraries
 
 To see the speaker notes press "p"
 
 ???
 
 https://dli-ml.lib.ncsu.edu/sumavision/
-
-http://localhost:5000
 
 https://distill.pub/2018/building-blocks/
 
@@ -37,8 +38,11 @@ Here are some notes for the speakers to control the slide deck:
 <img class="img-center img-squash" src="images/hype2.png"></img>
 
 ???
-There's been a lot of news about deep learning and hype about what it can do.
-It is really changing the world and all of our lives
+
+You've probably heard a lot about machine learning in the news, and have
+undoubtedly interacted with things that use it. We're going to talk
+about what it is, what it can be used for, how it works and its
+application in libraries.
 
 ---
 # Computers are good at:
@@ -50,15 +54,12 @@ It is really changing the world and all of our lives
 
 ???
 
-Let's set the stage a little bit. There are some things that computers have traditionally been good at:
-- calculations: financial software, calculating PI
-- data storage and retrieval / displaying data: social networks, storing
-  data in the cloud
-- and automation of routine tasks: data cleanup, used to take a while to
-  do manually, greatly sped up by computers. well defined rules and structure, applied
-  at a large scale
+Let's set the stage a little bit. Here are some things that computers have traditionally been good at:
 
-We've seen these over and over again during the history of computing. These are things we've been able to do on a computer for a long time.
+Things involving calculations, data storage, retrieval and display, and automating things that used to take a while todo manually, following well defined rules and structure.
+
+We've seen these over and over again during the history of computing. These are things we've been able to do on a computer for a long time and we can do them at a fairly large scale now.
+
 
 ---
 # Computers are bad at:
@@ -86,7 +87,7 @@ https://dli-ml.lib.ncsu.edu/sumavision/
 
 We'll start off with a demo that maybe 5-7 years ago would have been very hard to accomplish using traditional computing tools.
 
-Hopefully everyone is familiar with Suma? Suma is an application we manage in DLI for doing space analytics. Generally the way this is done is that someone walks through the library with an IPad and observes with their own eyes what people are doing in our spaces. They manually capture the count by navigating the space and pressing a button for each person they see.
+To give some context, Suma is an application we manage in DLI for doing space analytics. Generally the way this is done is that someone walks through the library with an IPad and observes with their own eyes what people are doing in our spaces. They manually capture the number of people by navigating the space and pressing a button for each person they see.
 
 ---
 # SumaVision Demo 1
@@ -95,7 +96,7 @@ Hopefully everyone is familiar with Suma? Suma is an application we manage in DL
 
 ???
 
-Of course there would be ethical issues to consider if actually implemented this, but what if we could capture images of a space and use that to count the number of people in a space?
+This is a demo to illustrate the power of the technology, so we'll leave ethical considerations aside for right now. What if we could capture images of a space and use that to count the number of people in a space?
 
 We built this demo to show that we can do something like this pretty easily. You can see that this was captured in Suma.
 
@@ -243,10 +244,10 @@ Text-to-Speech is done as well, primarily to improve the quality of the voice re
 
 ---
 class:impact
-# A Short History of Deep Learning
+# Deep Learning Has Been Around For A While
 
 ???
-Deep learning is rooted in decades of mathetmatics research and based on models of how the human brain works. The ideas behind deep learning have been in development since the 1940s, but really only exploded in popularity in 2012.
+Deep learning is rooted in decades of mathematics research and based on models of how the human brain works. The ideas behind deep learning have been in development since the 1940s, but really only exploded in popularity in 2012 when a researcher used a deep learning model to achieve state of the art by a significant margin in a computer vision research contest, beating out traditional computer vision approaches for the first time.
 
 ---
 # Why did deep learning take so long to catch on?
@@ -293,12 +294,7 @@ number represents the intensity of a particular pixel (or how light/dark
 it is). For colored images, each number would be a set of 3 numbers that
 represent the intensity of Red, Green, and Blue colors in a given pixel.
 
-For text, we can express each letter as a vector that has 26 values
-corresponding to each letter in the alphabet. The position of the given
-letter will be 1, and everything else will be 0. As
-you can see in the example, for the first letter "A", the first value is
-a 1, and for the "D", the 4th value is a 1, and so on. This is called
-"one-hot encoding".
+There are similar approaches for text and other data.
 
 ---
 
@@ -308,7 +304,7 @@ a 1, and for the "D", the 4th value is a 1, and so on. This is called
   - Example: given an image, can I predict whether it is of a cat or a dog?
 
 - Gather training data
-  - Images of cats and dogs that are labeled "cat" or "dog"
+  - Images of cats and dogs that are already labeled "cat" or "dog"
 
 - Given this set of labeled training data, train a model that can
   make predictions given new, unseen images.
@@ -328,13 +324,18 @@ read slide
 
 ???
 
-When input data flows through the network, and a prediction is made, we
-call it the forward pass, or a feed forward network. Each neuron in a
-network is learning to recognize a specific feature of the input image.
-Neurons in earlier layers are learning low-level features like edges, while later
-layers progress to learning higher level features, like noses, ears, tails, then heads/bodies.
-At the end, it is fed through a final layer that does classification
-based on what features it has most strongly detected.
+Here's what a standard neural network looks like. They are organized as
+stacked layers of neurons, with connections between them. Each of these
+connections has a numerical weight that represents how strong the
+connection is, and these are what we need to learn as part of the
+training process.
+
+Our input image is fed into the network from the left and the data flows
+through the neurons and connections until a prediction is made at the
+end. Earlier layers learn abstract features like edges of the image, while later
+layers learn more specific features like noses, ears, tails.
+Here you can see the network has predicted the image
+is a dog with 91% confidence.
 
 ---
 
@@ -344,154 +345,66 @@ based on what features it has most strongly detected.
 
 ???
 
-Let's zoom in on a single neuron to see what it is doing. Remember, each neuron is
-learning to recognize a different feature of the image.
-
-As we mentioned before, the basic structure of a neural network is
-modeled after the way the human brain works. I've included labels for
-the corresponding part in the human neuron, as well as the mathematical
-notation for how everything is represented in the neural network.
-
-Mathematically, there are a few things going on here, but I want to just
-point out a couple of important things. Several signals come in through
-these connections from the previous neurons, and each connection
-carries a different weight which is applied to the signal. The weights
-are the values that we need to learn - they influence what features a neuron
-detects.
-
-Concretely, imagine each input to this neuron is a pixel in the image, and this neuron is looking for a cat-shaped ear
-in the image. The weights for those pixels that contributes to the
-shape/texture of a cat-shaped ear would be higher, and the weights for those pixels that don't
-would be low. Think of the weights as either amplifying the signal of
-the pixel if it contributes to the feature this neuron is looking for, or quieting the signal if it doesn't
-
-So these values are all passed into the cell body where they are
-combined, and then they are passed to an activation function.
-The activation function is what controls whether a neuron fires or not, and
-how strong the signal will be. Think of this like the
-dimmer switch on a light - it can either be off and pass no signal, or some degree of on sending
-a signal that ranges from very weak to very strong. In neural networks, there are a variety
-of different activation functions we can use.
-
-If something that contains a cat's ear is passed into this
-neuron, this activation function would fire and a strong signal would be
-passed to the next neuron.
+Here's a zoomed in view of a single neuron. It is responsible for applying the weights on the incoming connections,
+combining them, then sending that value through an activation function which handles whether that neuron
+"fires" or not. The signal is then passed to the next neurons.
 
 ---
 
-# Training Process - Loss/Cost Function
+# Training Process
 
-- Measure of error between prediction and known label
-- Mean Squared Error is popular, but anything that can measure error will work
-
-<img class="img-center" src="images/loss_function.pbm"></img>
-
-???
-
-Now that we have a network model, and we have some intuition about
-how it works, how do we go about training it? We have a process for
-getting a prediction on an example, which has a confidence score
-associated with it. We need a measure to determine how good or bad our
-prediction is, which is where a Loss Function comes in.
-
-So rememeber, during training we are passing in a set of images where we
-know what the correct label is. A loss (or cost) function tells us how far
-away our network's prediction is from what we know to be the actual answer. There
-are many different options for a loss function, but for a classification
-problem like this, the mean squared error is a popular choice.
-
-The function will output a large value if we are further off from the
-truth, and a smaller value if we are closer.
-
----
-
-# Training Process - Gradient Descent
-
-<img class="img-center img-squash" src="images/gradient_descent.png"></img>
+- Loss function
+  - A measure of how close our predicted value is to the actual value of
+    a training example
+- Gradient Descent
+  - Need to find values of all weights in network such that the loss function is minimized
+    (outputs a small value) for all training examples
+- Backpropagation
+  - Use approaches from calculus (derivative/chain rule) to figure out how much/in what
+    direction to adjust all weight values in network
+  - Start from end of network, going backwards to the beginning
+  - Update all weights, repeat process many times over entire training
+    set
 
 ???
 
-So now that we have a way to measure how we're doing, we need a process
-to get better. Our objective will be to try to get the cost function to
-return values as small as possible for the combination of all of our
-training examples, or more formally "minimize the cost function". The
-values that influence this and that need to be adjusted are the weights
-of the connections in our network.
+To train the network, there are a few things we need. First, we need a
+loss function, which tells us how close our network's prediction is to
+the actual value.
 
-Here you can see what this function tends to looks like when it is graphed in
-relation to 2 of the weight values in the network. In real networks, we
-are dealing with potentially hundreds of thousands to millions of weights,
-but the principles in this smaller example still generally hold true.
+Then we need a way to find values for all of the weights in the network
+so that this loss function consistently outputs good values for all our
+training examples. This would mean our network is generating good
+predictions.
 
-Our goal is to get to the lowest point in this graph. But the problem is
-that we can't calculate this graph in a real setting because of the sheer size
-and complexity. To put this into perspective, imagine you're somewhere on a hill
-in a mountain range, it is dark and you can't really see what's in front of you.
-You want to get down the mountain in the most efficient way possible
-(so, you want to figure out the steepest direction, and take a couple of small
-steps then re-evaluate).
-
-This is exactly what we need to do to train the neural network, the
-lowest point on this graph represents specific values for all of the weights where the cost function is
-outputting the lowest value. This process is a mathematical technique called
-"Gradient Descent"
-
----
-
-# Training Process - Backpropagation
-
-<img class="img-center img-squash" src="images/backpropagation.png"></img>
-
-???
-
-So we know we need to take a step (or adjust all the weights), but how do we figure out which
-direction we need to take a step and how big that step should be? Every neuron has a
-different effect on the output, and we need a way to update them all at
-the same time in such a way that changing one doesn't have a negative
-effect on any of the others. This process is called
-"backpropagation".
-
-Does anyone remember their high school calculus class? Derivatives? The
-chain rule? That is what the basis of backpropagation is. For those who
-aren't familiar, taking the derivative of one value tells us how
-sensitive to change it is with respect to a change in another value.
-
-Using the chain rule, we can calculate the derivatives for every weight
-in the network layer by layer starting from the end going backwards to the
-beginning (hence backpropagation).
-
----
-
-
-# Training Process - Update Weights
-
-<img class="img-center" src="images/weight_update.png"></img>
-
-???
-
-We then use this function to update the weights to their new values
-using the information we got about what effect changing each weight will
-have on the prediction output.
-
-The only thing I want to point out about this is there is a term called
-the "learning rate", which is a configurable value we must choose. It controls
-how big of a step we take each time in gradient descent. Set it too large, and
-we'll likely overshoot the lowest point and never arrive at the optimal
-values  for the weights. Set it too small and it will take forever to
-get to that optimal point. This requires experimentation when going
-through the training process.
-
-To get a decently trained model, we repeat this whole process over the entire training set many times.
+To do this, we use a process called backpropagation, which uses
+approaches from calculus to calculate the amount/direction we need to
+adjust the weights so that we'll be closer to the right prediction the next time we run this
+example through the network. We update all the weights, and repeat this
+process multiple times over the entire training set. This is called
+backpropagation, because we start these calculations from the end of the
+network and flow backwards to the beginning.
 
 ---
 
 # Trained Model
 
-<img class="img-center img-squash" src="images/nn_trained.png"></img>
+- Weights are set to values such that model makes good predictions on
+  training set
+  - Training set should be a representative view of reality in order to
+    generate a good model
+- Inference
+  - Can now run unseen examples through model to get predictions
+- Single purpose
+  - Can recognize cats and dogs, but not horses
+  - But can just add images of horses to training set, add third output
+    class, and retrain model
 
 ???
 - Now that the model has been trained on a large representative dataset,
   it is very good at distinguishing between cats and dogs.
+- Our model is now ready to be put into production within an application that will feed it new data.
+  The process of getting predictions from your model on unseen data is called inference.
 - But if you showed it a picture of a horse, it would be very confused, since it
   has never seen a horse before. It would likely report low confidence
   scores for both cat and dog
@@ -504,26 +417,6 @@ To get a decently trained model, we repeat this whole process over the entire tr
 
 ---
 
-# Inference
-
-<img src="images/inference.png" class="img-center img-squash"></img>
-
-???
-Our model is now ready to be put into production within an application that will feed it new data.
-The process of getting predictions from your model on unseen data is called inference.
-
-Here's an example of an application where we've integrated this model.
-You can take pictures on your phone and it will tell you whether the
-picture is of a cat or a dog. Please don't steal my great idea.
-
-It's important to note here that you will get varying levels of
-confidence in the predictions from your model, and part of the challenge
-in integrating it in an application is deciding how good is good enough. It really depends on how the prediction will be used, and should be taken into account when
-deploying a model into a production application.
-
-On another note, in our demos, we've exposed our models through an API that our applications can call. This allows for reuse of the capabilities of the models. For instance, if several applications need to do people counting like in our SumaVision demo, they can all use the exact same trained model to do that.
-
----
 # Types of neural networks
 
 - Convolutional Neural Network (CNN)
@@ -537,19 +430,11 @@ http://www.asimovinstitute.org/neural-network-zoo/
 In our example, we've shown you a 'vanilla neural network', or by its
 cooler name: multilayer perceptron.
 
-There are dozens of neural networks architectures, each having its own
-strengths. Most work same in principle, but specifics are different
+There are many types of neural networks suited for different purposes.
+For example:
+- Convolutional neural networks are good for images
+- Recurrent Neural networks are good for text
 
-- When operating on images, we use convolutional neural networks
-  - Learns filters to detect certain things in images (ie, features)
-- When operating on text or other data with a temporal or sequential relationship, we use
-  recurrent neural networks
-  - There are variations on these too, like LSTM which adds a memory
-    component so the network can recall things that happened earlier
-    while processing
-- If you've ever seen an example of a neural network trying to draw an
-  image, it may have used a generative adversarial network to achieve
-  that
 
 ---
 class:impact
@@ -644,7 +529,7 @@ class: impact
 ???
 KB Start
 
-Major part of our exploration is to identify some of the opportunities in libraries.
+A major part of our initial exploration in this area was to identify some of the opportunities in libraries.
 
 We've found three major categories.
 
@@ -654,7 +539,7 @@ class:impact
 
 ???
 
-Integrating deep learning into our own applications to get some new functionality we couldn't get before like improving the way we auto generate metadata, how we handle chat interactions, and improved search capabilities. Example Deep Catalog.
+First is integrating deep learning into our own applications to get some new functionality we couldn't get before. We've mostly been looking at automatic generation of metadata or analyzing media like images, audio and video so far.
 
 ---
 class: impact
@@ -667,10 +552,6 @@ Here's a demo application we've developed to show how we could leverage
 deep learning to get a head start in metadata generation for newly
 digitized or created materials, and how we could improve discovery
 without any human generated metadata.
-
-It also highlights the importance of systems integrations in supporting usage of machine learning. For each part of this example, we're using a different approach
-in how we're generating the data. These approaches used in deep learning pipelines can create new capabilities in our services.
-
 
 ---
 
@@ -694,26 +575,20 @@ to pay attention to some of the key things he mentions.
 Now lets look at this new catalog application. I'm going to ingest this
 video and only give it a title and author.
 
+So what is happening here? When I uploaded the video, in the background, the
+audio was extracted automatically and it was run through a speech to
+text model. The full text is being indexed into Solr.
+
 Remember what Danny was talking about in the video? Harrelson Hall?
 Let's try searching for that. He also mentioned he used to be a physics
 major right? Let's try that one too. He said that he ended up a liberal
 arts major though. You can see where I'm going with this.
 
-So what happened here? When I uploaded the video, in the background, the
-audio was extracted automatically and it was run through a speech to
-text model. In this example the full text itself was indexed so that we
-were able to search for terms that appear in there.
-
-But now that we have a textual transcription, imagine what else we can do.
+Now that we have a textual transcription, imagine what else we can do.
 We can definitely provide it directly to users and automatically enable
 captioning on the video. We can do further analysis on that text, and
 generate recommendations for appropriate subject headings, or at least
 get the key terms or create a summary in an automated way.
-
-This was using the Google Speech API. We chose to use that because it
-does a way better job that a model we ran locally could do, and speech
-to text is a fairly generic problem, so we have no reason to customize
-it.
 
 ---
 # Newspapers
@@ -722,9 +597,12 @@ it.
 
 ???
 
-Here's one more. Remember when we mentioned transfer learning before? This one uses the same model architecture as
+Here's another.
+Remember when we mentioned transfer learning before? This one uses the same model architecture as
 SumaVision, but we took off the later layers and retrained on new data
-we collected. This one finds the location of headlines and images in
+we collected.
+
+This one finds the location of headlines and images in
 newspapers. We can then run further processing to find out what is in
 the image, and to OCR the headlines. We can then offer more fine grained
 search results based on the articles in a newspaper, and the ability to
@@ -738,7 +616,7 @@ class:impact
 
 
 ???
-The second is supporting researchers through deep learning consultations and research sprints. We can help bootstrap researchers looking to get started with applying deep learning techniques to their research projects. Example snowflake research.
+The second opportunity for libraries is supporting researchers through deep learning consultations and research sprints. We can help bootstrap researchers looking to get started with applying deep learning techniques to their research projects. Example snowflake research.
 
 ---
 # Snowflake Classification
@@ -751,7 +629,7 @@ The second is supporting researchers through deep learning consultations and res
 
 ???
 
-Dr. Matthew Miller from the dept of marine, earth, and atmospheric sciences, contacted the libraries looking for machine learning support. They have an extremely large dataset of over 1 million snowflake images. These images are taken by one of only ten cameras that are doing this capture. Have used a number of "traditional" machine learning techniques to attempt to classify degrees of "riming" on snowflakes, that is, how large or small the clusters of ice are. We are working with them to develop a proof of concept model to explore the potential for current deep learning computer vision techniques to improve on their results.
+A faculty member at NCSU from the dept of marine, earth, and atmospheric sciences, contacted the libraries looking for machine learning support. They have an extremely large dataset of over 1 million snowflake images. These images are taken by one of only ten cameras that are doing this capture. Have used a number of "traditional" machine learning techniques to attempt to classify degrees of "riming" on snowflakes, that is, how large or small the clusters of ice are. We are working with them to develop a proof of concept model to explore the potential for current deep learning computer vision techniques to improve on their results.
 
 This has also been an opportunity to explore the viability of providing this kind of service to researchers. Is it useful for them? Can we scale this kind of support?
 
@@ -760,7 +638,7 @@ class:impact
 # Cultural Heritage Ecosystem
 
 ???
-Third is developing the ecosystem around deep learning use, e.g. data annotation, data distribution, etc. In general, improving use of these approaches among cultural heritage institutions.
+Third opportunity area is developing the ecosystem around deep learning use, e.g. data annotation, data distribution, etc. In general, improving use of these approaches among cultural heritage institutions.
 
 ---
 # Data Annotation and Sharing
@@ -802,3 +680,6 @@ Example of work being done to help expose the way neural networks make decisions
 ---
 class:impact
 # Thanks!
+
+## Kevin Beswick (kdbeswic@ncsu.edu)
+## Bret Davidson (bddavids@ncsu.edu)
