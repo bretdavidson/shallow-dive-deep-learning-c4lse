@@ -691,3 +691,5 @@ class:impact
 
 ## Kevin Beswick (kdbeswic@ncsu.edu)
 ## Bret Davidson (bddavids@ncsu.edu)
+
+go.ncsu.edu/c4lse-dl
