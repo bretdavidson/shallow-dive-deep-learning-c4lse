@@ -1,5 +1,5 @@
 title: A Shallow Dive Into Deep Learning
-url:
+url: go.ncsu.edu/c4lse-dl
 class: animation-fade
 layout: true
 
@@ -17,6 +17,8 @@ layout: true
 ### NCSU Libraries
 
 To see the speaker notes press "p"
+
+go.ncsu.edu/c4lse-dl
 
 ???
 
